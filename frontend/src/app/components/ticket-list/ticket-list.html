@@ -1,0 +1,63 @@
+<div class="ticket-list-container">
+  <div class="header">
+    <h1>Lista de Tickets</h1>
+    <button (click)="createNewTicket()" class="btn btn-primary">Crear Nuevo Ticket</button>
+  </div>
+
+  <div class="filters">
+    <h3>Filtrar por:</h3>
+    <select [(ngModel)]="filterStatus" (ngModelChange)="applyFilters()">
+      <option value="">Todos los Estados</option>
+      <option value="PENDING">Pendiente</option>
+      <option value="IN_PROGRESS">En Curso</option>
+      <option value="CLOSED">Cerrado</option>
+    </select>
+
+    <select [(ngModel)]="filterPriority" (ngModelChange)="applyFilters()">
+      <option value="">Todas las Prioridades</option>
+      <option value="LOW">Baja</option>
+      <option value="MEDIUM">Media</option>
+      <option value="HIGH">Alta</option>
+    </select>
+
+    <select [(ngModel)]="filterTechnicianId" (ngModelChange)="applyFilters()">
+      <option value="">Todos los Técnicos</option>
+      <option *ngFor="let tech of technicians" [value]="tech.id">{{ tech.name }}</option>
+    </select>
+
+    <button (click)="clearFilters()" class="btn btn-light">Limpiar Filtros</button>
+  </div>
+
+  <table class="ticket-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Estado</th>
+        <th>Prioridad</th>
+        <th>Técnico Asignado</th>
+        <th>Fecha Apertura</th>
+        <th>Fecha Cierre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.title }}</td>
+        <td><span class="status" [ngClass]="ticket.status.toLowerCase()">{{ ticket.status }}</span></td>
+        <td><span class="priority" [ngClass]="ticket.priority.toLowerCase()">{{ ticket.priority }}</span></td>
+        <td>{{ ticket.assignedTechnicianId && technicianMap[ticket.assignedTechnicianId] ? technicianMap[ticket.assignedTechnicianId] : 'No asignado' }}</td>
+        <td>{{ ticket.openingDate | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ ticket.closingDate ? (ticket.closingDate | date:'dd/MM/yyyy') : 'N/A' }}</td>
+        <td class="actions">
+          <button (click)="editTicket(ticket.id!)" class="btn btn-edit">Editar</button>
+          <button (click)="deleteTicket(ticket.id!)" class="btn btn-delete">Eliminar</button>
+        </td>
+      </tr>
+      <tr *ngIf="tickets.length === 0">
+        <td colspan="8" class="no-tickets">No se encontraron tickets.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

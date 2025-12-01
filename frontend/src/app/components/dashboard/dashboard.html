@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+  <div *ngIf="stats; else loading">
+    <h1>Dashboard de Rendimiento</h1>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Tickets Abiertos Hoy</h3>
+        <p class="stat-value">{{ stats.openedToday }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tickets Cerrados Hoy</h3>
+        <p class="stat-value">{{ stats.closedToday }}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tiempo Medio Resolución</h3>
+        <p class="stat-value">{{ stats.averageResolutionTime.toFixed(1) }} días</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tickets Reabiertos</h3>
+        <p class="stat-value">{{ stats.reopenedTickets }}</p>
+      </div>
+    </div>
+
+    <h2>Estado General de Tickets</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Tickets</h3>
+        <p class="stat-value">{{ getTotalTickets() }}</p>
+      </div>
+      <div class="stat-card status-pending">
+        <h3>Pendientes</h3>
+        <p class="stat-value">{{ stats.statusCounts['PENDING'] || 0 }}</p>
+      </div>
+      <div class="stat-card status-in-progress">
+        <h3>En Curso</h3>
+        <p class="stat-value">{{ stats.statusCounts['IN_PROGRESS'] || 0 }}</p>
+      </div>
+      <div class="stat-card status-closed">
+        <h3>Cerrados</h3>
+        <p class="stat-value">{{ stats.statusCounts['CLOSED'] || 0 }}</p>
+      </div>
+    </div>
+
+    <!-- Lista de Técnicos con Resumen de Tickets -->
+    <div class="card technicians-summary-card">
+      <div class="card-header">
+        <h2>Resumen por Técnico</h2>
+      </div>
+      <div class="card-body">
+        <table class="technician-table">
+          <thead>
+            <tr>
+              <th>Técnico</th>
+              <th>Especialidad</th>
+              <th>Tickets Asignados</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let summary of technicianSummary">
+              <td>{{ summary.technicianName }}</td>
+              <td>{{ summary.specialty }}</td>
+              <td>{{ summary.ticketCount }}</td>
+            </tr>
+            <tr *ngIf="technicianSummary.length === 0">
+              <td colspan="3" class="no-data">No hay datos de técnicos disponibles.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #loading>
+    <p style="text-align: center; padding: 2rem;">Cargando datos del dashboard...</p>
+  </ng-template>
+</div>

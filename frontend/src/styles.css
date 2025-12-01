@@ -1,0 +1,211 @@
+/* Global Styles */
+
+:root {
+  --primary-color: #005f99; /* Un azul corporativo más oscuro */
+  --secondary-color: #007bff; /* Un azul más brillante para acentos */
+  --light-color: #f8f9fa; /* Un gris muy claro para fondos */
+  --dark-color: #343a40; /* Gris oscuro para texto */
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --border-color: #dee2e6;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #004c7a;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-edit {
+  background-color: var(--warning-color);
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+}
+
+
+/* Forms */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  box-sizing: border-box; /* Añadido para consistencia */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Tables */
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.ticket-table th,
+.ticket-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ticket-table thead {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.ticket-table tbody tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+.ticket-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.ticket-table .actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Status & Priority Badges */
+.status, .priority {
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status.closed {
+  background-color: var(--success-color);
+}
+
+.status.in_progress {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.status.open {
+  background-color: var(--danger-color);
+}
+
+.priority.high {
+  background-color: var(--danger-color);
+}
+
+.priority.medium {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.priority.low {
+  background-color: #6c757d;
+}

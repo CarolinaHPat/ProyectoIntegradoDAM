@@ -1,0 +1,100 @@
+.dashboard-container {
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.status-pending {
+  border-left: 5px solid #ffc107;
+}
+
+.status-in-progress {
+  border-left: 5px solid #17a2b8;
+}
+
+.status-closed {
+  border-left: 5px solid #28a745;
+}
+
+/* Tabla de Resumen de Técnicos */
+.technicians-summary-card {
+  margin-top: 2rem;
+}
+
+.technicians-summary-card .card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.technician-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.technician-table th,
+.technician-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.technician-table tbody tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+.technician-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+}
+
+.stat-card.status-unassigned {
+  background-color: #f0f2f5;
+  border-left: 5px solid #6c757d;
+}
+
+.stat-card.status-unassigned h3 {
+  color: #6c757d;
+}
