@@ -9,7 +9,7 @@ import { TechnicianTicketSummary } from '../models/technician-ticket-summary.mod
 })
 export class DashboardService {
 
-  private apiUrl = 'http://localhost:8081/api/dashboard';
+  private apiUrl = 'http://localhost:8083/api/dashboard';
 
   constructor(private http: HttpClient) { }
 

@@ -4,11 +4,14 @@
     <form (ngSubmit)="login()">
       <div class="input-group">
         <label for="username">Usuario</label>
-        <input id="username" type="text" placeholder="Introduce tu usuario" required>
+        <input id="username" type="text" placeholder="Introduce tu usuario" [(ngModel)]="username" name="username" required>
       </div>
       <div class="input-group">
         <label for="password">Contraseña</label>
-        <input id="password" type="password" placeholder="Introduce tu contraseña" required>
+        <input id="password" type="password" placeholder="Introduce tu contraseña" [(ngModel)]="password" name="password" required>
+      </div>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
       </div>
       <button type="submit">Entrar</button>
     </form>
