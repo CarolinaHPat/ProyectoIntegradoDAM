@@ -7,6 +7,12 @@ import { TicketService } from '../../services/ticket';
 import { TechnicianService } from '../../services/technician';
 import { Ticket } from '../../models/ticket.model';
 import { Technician } from '../../models/technician.model';
+import {
+  TICKET_PRIORITY_LABELS,
+  TICKET_PRIORITY_OPTIONS,
+  TICKET_STATUS_LABELS,
+  TICKET_STATUS_OPTIONS
+} from '../../models/ticket-options';
 
 @Component({
   selector: 'app-ticket-list',
@@ -25,6 +31,11 @@ export class TicketListComponent implements OnInit {
   filterStatus = '';
   filterPriority = '';
   filterTechnicianId = '';
+
+  readonly statusOptions = TICKET_STATUS_OPTIONS;
+  readonly priorityOptions = TICKET_PRIORITY_OPTIONS;
+  readonly statusLabels = TICKET_STATUS_LABELS;
+  readonly priorityLabels = TICKET_PRIORITY_LABELS;
 
   constructor(
     private ticketService: TicketService,

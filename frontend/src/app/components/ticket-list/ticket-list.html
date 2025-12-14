@@ -8,16 +8,12 @@
     <h3>Filtrar por:</h3>
     <select [(ngModel)]="filterStatus" (ngModelChange)="applyFilters()">
       <option value="">Todos los Estados</option>
-      <option value="PENDING">Pendiente</option>
-      <option value="IN_PROGRESS">En Curso</option>
-      <option value="CLOSED">Cerrado</option>
+      <option *ngFor="let opt of statusOptions" [value]="opt.value">{{ opt.label }}</option>
     </select>
 
     <select [(ngModel)]="filterPriority" (ngModelChange)="applyFilters()">
       <option value="">Todas las Prioridades</option>
-      <option value="LOW">Baja</option>
-      <option value="MEDIUM">Media</option>
-      <option value="HIGH">Alta</option>
+      <option *ngFor="let opt of priorityOptions" [value]="opt.value">{{ opt.label }}</option>
     </select>
 
     <select [(ngModel)]="filterTechnicianId" (ngModelChange)="applyFilters()">
@@ -45,8 +41,8 @@
       <tr *ngFor="let ticket of tickets">
         <td>{{ ticket.id }}</td>
         <td>{{ ticket.title }}</td>
-        <td><span class="status" [ngClass]="ticket.status.toLowerCase()">{{ ticket.status }}</span></td>
-        <td><span class="priority" [ngClass]="ticket.priority.toLowerCase()">{{ ticket.priority }}</span></td>
+        <td><span class="status" [ngClass]="ticket.status.toLowerCase()">{{ statusLabels[ticket.status] || ticket.status }}</span></td>
+        <td><span class="priority" [ngClass]="ticket.priority.toLowerCase()">{{ priorityLabels[ticket.priority] || ticket.priority }}</span></td>
         <td>{{ ticket.assignedTechnicianId && technicianMap[ticket.assignedTechnicianId] ? technicianMap[ticket.assignedTechnicianId] : 'No asignado' }}</td>
         <td>{{ ticket.openingDate | date: 'dd/MM/yyyy' }}</td>
         <td>{{ ticket.closingDate ? (ticket.closingDate | date:'dd/MM/yyyy') : 'N/A' }}</td>

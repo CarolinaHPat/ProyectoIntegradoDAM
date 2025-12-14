@@ -7,6 +7,7 @@ import { Ticket } from '../../models/ticket.model';
 import { Technician } from '../../models/technician.model';
 import { TicketService } from '../../services/ticket';
 import { TechnicianService } from '../../services/technician';
+ import { TICKET_PRIORITY_OPTIONS, TICKET_STATUS_OPTIONS } from '../../models/ticket-options';
 
 @Component({
   selector: 'app-ticket-form',
@@ -25,6 +26,9 @@ export class TicketFormComponent implements OnInit {
     priority: 'MEDIUM',
     assignedTechnicianId: null
   };
+
+  readonly statusOptions = TICKET_STATUS_OPTIONS;
+  readonly priorityOptions = TICKET_PRIORITY_OPTIONS;
   technicians: Technician[] = [];
   isEditMode = false;
   private ticketId: number | null = null;

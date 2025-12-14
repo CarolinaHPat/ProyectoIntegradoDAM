@@ -1,10 +1,12 @@
+import type { TicketPriority, TicketStatus } from './ticket-options';
+
 export interface Ticket {
   id?: number;
   title: string;
   description: string;
-  status: 'OPEN' | 'IN_PROGRESS' | 'CLOSED';
-  openingDate?: string; 
+  status: TicketStatus;
+  openingDate?: string;
   closingDate?: string;
-  priority: 'LOW' | 'MEDIUM' | 'HIGH';
+  priority: TicketPriority;
   assignedTechnicianId: number | null;
 }

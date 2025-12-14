@@ -23,15 +23,28 @@
 }
 
 .btn {
-  padding: 8px 15px;
+  display: inline-block;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #004c7a;
 }
 
 .btn-secondary {
@@ -40,16 +53,18 @@
 }
 
 .btn-light {
-  background-color: #f8f9fa;
-  color: #333;
-  border: 1px solid #ccc;
+  background-color: var(--light-color);
+  color: #212529;
+  border: 1px solid var(--border-color);
 }
 
 .ticket-table {
   width: 100%;
   border-collapse: collapse;
   background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
 .ticket-table thead th {
@@ -70,26 +85,27 @@ tbody td {
   text-transform: uppercase;
 }
 
-.status.pending { background-color: #ffc107; }
+.status.open { background-color: var(--secondary-color); }
+.status.pending { background-color: var(--warning-color); color: var(--dark-color); }
 .status.in_progress { background-color: #17a2b8; }
-.status.closed { background-color: #28a745; }
+.status.closed { background-color: var(--success-color); }
 
-.priority.low { background-color: #28a745; }
-.priority.medium { background-color: #ffc107; }
-.priority.high { background-color: #dc3545; }
+.priority.low { background-color: #6c757d; }
+.priority.medium { background-color: var(--warning-color); color: var(--dark-color); }
+.priority.high { background-color: var(--danger-color); }
 
 .actions .btn {
   margin-right: 5px;
 }
 
 .btn-edit {
-  background-color: #ffc107;
-  color: #333;
+  background-color: var(--warning-color);
+  color: var(--dark-color);
 }
 
 .btn-delete {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--danger-color);
+  color: #fff;
 }
 
 .no-tickets {

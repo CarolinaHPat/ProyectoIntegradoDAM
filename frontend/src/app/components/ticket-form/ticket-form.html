@@ -15,25 +15,21 @@
     <div class="form-group">
       <label for="status">Estado</label>
       <select id="status" name="status" [(ngModel)]="ticket.status">
-        <option value="PENDING">Pendiente</option>
-        <option value="IN_PROGRESS">En Curso</option>
-        <option value="CLOSED">Cerrado</option>
+        <option *ngFor="let opt of statusOptions" [value]="opt.value">{{ opt.label }}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="priority">Prioridad</label>
       <select id="priority" name="priority" [(ngModel)]="ticket.priority">
-        <option value="LOW">Baja</option>
-        <option value="MEDIUM">Media</option>
-        <option value="HIGH">Alta</option>
+        <option *ngFor="let opt of priorityOptions" [value]="opt.value">{{ opt.label }}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="technician">Técnico Asignado</label>
       <select id="technician" name="technician" [(ngModel)]="ticket.assignedTechnicianId">
-        <option [ngValue]="undefined">Sin asignar</option>
+        <option [ngValue]="null">Sin asignar</option>
         <option *ngFor="let tech of technicians" [value]="tech.id">{{ tech.name }}</option>
       </select>
     </div>
