@@ -26,6 +26,20 @@ Proyecto Integrado/
 
 ## Instalación y ejecución
 
+### Primer paso: Restaurar dependencias
+
+Después de descargar o clonar el proyecto, es necesario restaurar las dependencias (los directorios `node_modules` y `target` no están incluidos para reducir el tamaño):
+
+```bash
+# Instalar dependencias del frontend
+cd frontend
+npm install
+
+# Volver a la raíz e instalar dependencias del backend
+cd ..
+mvn install
+```
+
 ### 1. Backend (Spring Boot)
 
 **Opción A: Desde IntelliJ IDEA**
